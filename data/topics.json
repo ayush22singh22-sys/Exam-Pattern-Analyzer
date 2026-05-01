@@ -1,0 +1,120 @@
+{
+  "Computer Organization and Architecture": {
+    "Basic Structure of Computers": [
+      "desktop computer", "input unit", "output unit", "memory unit",
+      "arithmetic logic unit", "control unit", "functional units",
+      "primary memory", "secondary memory", "main memory",
+      "semiconductor memory", "magnetic disk", "magnetic tape"
+    ],
+    "CPU Organization": [
+      "cpu", "central processing unit", "alu", "control unit",
+      "processor register", "accumulator", "flag register",
+      "program status register", "general purpose register"
+    ],
+    "Register Transfer Language": [
+      "register transfer", "micro operation", "macro operation",
+      "control function", "control variable", "clock signal",
+      "timing signal", "register transfer language", "rtl",
+      "hardware description"
+    ],
+    "Bus and Memory Transfer": [
+      "bus transfer", "memory transfer", "common bus",
+      "system bus", "data bus", "address bus", "control bus",
+      "multiplexer", "tri-state buffer", "tri state",
+      "bus structure", "single bus", "multiple bus",
+      "bus interconnection", "memory address register",
+      "memory data register", "mar", "mdr"
+    ],
+    "General Register Organization": [
+      "general register", "register organization",
+      "bus organization", "control word", "sela", "selb",
+      "destination register", "source register"
+    ],
+    "Stack Organization": [
+      "stack", "push", "pop", "lifo", "last in first out",
+      "stack pointer", "register stack", "memory stack",
+      "top of stack", "subroutine", "reverse polish",
+      "postfix", "infix", "prefix"
+    ],
+    "Instruction Format": [
+      "instruction format", "opcode", "operation code",
+      "three address", "two address", "one address",
+      "zero address", "instruction code", "operand field",
+      "address field", "source operand", "destination operand"
+    ],
+    "Addressing Modes": [
+      "addressing mode", "immediate mode", "direct address",
+      "indirect address", "register mode", "register indirect",
+      "auto increment", "auto decrement", "relative address",
+      "indexed addressing", "base register", "implied mode",
+      "effective address", "program counter"
+    ],
+    "ALU Design": [
+      "arithmetic logic unit", "alu design", "arithmetic circuit",
+      "logic circuit", "shift circuit", "arithmetic logic shift",
+      "micro operation"
+    ],
+    "I/O System": [
+      "input output", "i/o", "i/o interface", "i/o module",
+      "dma", "direct memory access", "interrupt",
+      "i/o processor", "data transfer"
+    ],
+    "Computer Arithmetic - Addition and Subtraction": [
+      "addition", "subtraction", "signed magnitude",
+      "ones complement", "1s complement", "twos complement",
+      "2s complement", "overflow", "carry", "signed number",
+      "fixed point", "integer arithmetic", "binary addition",
+      "binary subtraction", "overflow detection", "avf"
+    ],
+    "Booth Algorithm": [
+      "booth", "booth algorithm", "booth multiplication",
+      "multiplication algorithm", "signed multiplication",
+      "partial product", "arithmetic shift right",
+      "multiplier", "multiplicand", "sequence counter"
+    ],
+    "Division Algorithm": [
+      "division", "division algorithm", "dividend", "divisor",
+      "quotient", "remainder", "divide overflow",
+      "restoring division", "non restoring"
+    ],
+    "Floating Point Arithmetic": [
+      "floating point", "mantissa", "exponent", "significand",
+      "normalization", "normalized form", "bias",
+      "single precision", "double precision", "ieee 754",
+      "scaling factor", "radix point", "floating point addition",
+      "floating point subtraction", "floating point multiplication"
+    ],
+    "Multiplication Algorithm": [
+      "multiplication", "binary multiplication", "shift and add",
+      "partial product", "hardware multiply",
+      "successive shift", "double length product"
+    ],
+    "Control Unit Design": [
+      "control unit", "hardwired control", "microprogrammed control",
+      "microinstruction", "microprogram", "control memory",
+      "control address register", "sequencer", "microcode",
+      "horizontal", "vertical"
+    ],
+    "Memory Organization": [
+      "memory hierarchy", "cache memory", "cache",
+      "associative memory", "virtual memory", "page table",
+      "page fault", "tlb", "translation lookaside buffer",
+      "hit ratio", "miss ratio", "mapping", "direct mapping",
+      "set associative", "fully associative", "write back",
+      "write through", "ram", "rom", "sram", "dram"
+    ],
+    "Pipeline": [
+      "pipeline", "pipelining", "instruction pipeline",
+      "arithmetic pipeline", "pipeline hazard", "data hazard",
+      "structural hazard", "control hazard", "stall",
+      "forwarding", "branch prediction"
+    ],
+    "Interrupt and DMA": [
+      "interrupt", "interrupt handling", "interrupt service routine",
+      "vectored interrupt", "priority interrupt",
+      "daisy chain", "dma", "direct memory access",
+      "cycle stealing", "burst mode", "i/o processor",
+      "interrupt controller"
+    ]
+  }
+}
