@@ -53,7 +53,7 @@ def _call_gemini(prompt: str) -> str:
         if _client is None:
             _client = genai.Client(api_key=api_key)
         response = _client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=prompt,
         )
         return response.text.strip()
@@ -61,7 +61,7 @@ def _call_gemini(prompt: str) -> str:
         # Legacy google.generativeai SDK
         if _model is None:
             genai.configure(api_key=api_key)
-            _model = genai.GenerativeModel('gemini-1.5-flash')
+            _model = genai.GenerativeModel('gemini-2.5-flash')
         response = _model.generate_content(prompt)
         return response.text.strip()
 
