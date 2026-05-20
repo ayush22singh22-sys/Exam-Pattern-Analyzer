@@ -12,7 +12,7 @@ export default function UploadSection() {
   const [uploadProgress, setUploadProgress] = useState("");
   const [resultMessage, setResultMessage] = useState(null);
   
-  const { setAnalysisData } = useAnalysis();
+  const { setAnalysisData, apiUrl } = useAnalysis();
   const inputRef = useRef(null);
 
   const handleFiles = (newFiles) => {
@@ -57,7 +57,7 @@ export default function UploadSection() {
 
     try {
       // Calling FastAPI backend directly. Bypasses Next.js proxy to fix ECONNRESET / socket hang up bugs with multipart uploads.
-      const response = await fetch("http://127.0.0.1:8000/analyze", {
+      const response = await fetch(`${apiUrl}/analyze`, {
         method: "POST",
         body: formData,
       });
@@ -92,7 +92,7 @@ export default function UploadSection() {
     } catch (error) {
       console.error(error);
       setUploadProgress("");
-      setResultMessage(error.message.includes("Failed to fetch") ? "Connection error. Make sure the backend server is running on port 8000." : error.message);
+      setResultMessage(error.message.includes("Failed to fetch") ? `Connection error. Make sure the backend server is running at ${apiUrl}` : error.message);
     } finally {
       setUploading(false);
     }
