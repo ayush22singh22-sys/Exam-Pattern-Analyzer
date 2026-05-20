@@ -144,3 +144,69 @@ def trend_prediction(df: pd.DataFrame, threshold: float = 0.5) -> pd.DataFrame:
     })
     
     return result.reset_index(drop=True)
+
+def random_forest_prediction(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Part 3: Random Forest Prediction
+    
+    Uses a Random Forest Regressor to predict next year's keyword hits based on historical data.
+    
+    Args:
+        df: Input pandas DataFrame where rows are chapters, columns are years.
+        
+    Returns:
+        pandas DataFrame with columns: ['chapter', 'rf_predicted_next_year']
+    """
+    try:
+        from sklearn.ensemble import RandomForestRegressor
+    except ImportError:
+        print("[WARN] scikit-learn is not installed. Random Forest prediction will return 0.0")
+        if 'chapter' in df.columns:
+            chapters = df['chapter']
+        else:
+            chapters = df.index
+        df_res = pd.DataFrame({
+            'chapter': chapters,
+            'rf_predicted_next_year': 0.0
+        })
+        return df_res.reset_index(drop=True)
+
+    df = df.copy()
+    year_cols = _get_year_columns(df)
+    num_years = len(year_cols)
+    
+    if 'chapter' in df.columns:
+        chapters = df['chapter']
+    else:
+        chapters = df.index
+        
+    df_years = df[year_cols].apply(pd.to_numeric, errors='coerce').fillna(0)
+    y_values = df_years.values
+    
+    if num_years < 2:
+        return pd.DataFrame({
+            'chapter': chapters,
+            'rf_predicted_next_year': y_values[:, -1] if num_years == 1 else 0.0
+        }).reset_index(drop=True)
+        
+    x = np.arange(num_years).reshape(-1, 1)
+    
+    predictions = []
+    
+    # Train a Random Forest model for each chapter's frequency
+    # We fit RF on (year_index) to predict (hits)
+    rf = RandomForestRegressor(n_estimators=100, random_state=42)
+    
+    for i in range(len(chapters)):
+        y = y_values[i]
+        rf.fit(x, y)
+        # Predict for next year (x = num_years)
+        pred = rf.predict([[num_years]])[0]
+        predictions.append(max(0, pred))  # Ensure non-negative predictions
+        
+    result = pd.DataFrame({
+        'chapter': chapters,
+        'rf_predicted_next_year': predictions
+    })
+    
+    return result.reset_index(drop=True)

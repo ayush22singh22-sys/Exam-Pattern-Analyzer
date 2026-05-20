@@ -2,7 +2,7 @@
 from src.extractor import extract_text_from_pdf
 from src.cleaner import clean_text
 from src.matcher import match_topics_in_text, load_topics
-from src.prediction_engine import predict_topics, trend_prediction
+from src.prediction_engine import predict_topics, trend_prediction, random_forest_prediction
 import pandas as pd
 
 # Test extract
@@ -53,8 +53,13 @@ df_trend = trend_prediction(df)
 print(f"Trends: {len(df_trend)} rows")
 print(df_trend.head())
 
+df_rf = random_forest_prediction(df)
+print(f"Random Forest: {len(df_rf)} rows")
+print(df_rf.head())
+
 # Merge
 merged = pd.merge(df_predict, df_trend, on="chapter")
+merged = pd.merge(merged, df_rf, on="chapter")
 print(f"Merged: {len(merged)} rows")
 print(merged.head())
 

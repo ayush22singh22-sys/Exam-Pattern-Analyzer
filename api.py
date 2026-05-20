@@ -12,7 +12,7 @@ import pandas as pd
 from src.extractor import extract_text_from_pdf
 from src.cleaner import clean_text
 from src.matcher import match_topics_in_text, load_topics
-from src.prediction_engine import predict_topics, trend_prediction
+from src.prediction_engine import predict_topics, trend_prediction, random_forest_prediction
 
 # Graceful imports for optional dependencies
 try:
@@ -177,9 +177,11 @@ async def analyze_pdfs(files: List[UploadFile] = File(...)):
     # 4. Run prediction engine
     df_predict = predict_topics(df)
     df_trend = trend_prediction(df)
+    df_rf = random_forest_prediction(df)
     
     # Merge prediction results
     merged_predictions = pd.merge(df_predict, df_trend, on="chapter")
+    merged_predictions = pd.merge(merged_predictions, df_rf, on="chapter")
     predictions_list = merged_predictions.to_dict(orient="records")
     
     # Get top topics by ranking them across all years
