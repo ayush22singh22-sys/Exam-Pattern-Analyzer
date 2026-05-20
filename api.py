@@ -50,6 +50,14 @@ def extract_year_from_filename(filename: str) -> str:
     return Path(filename).stem[:20]
 
 
+@app.get("/")
+def home():
+    return {
+        "status": "online",
+        "message": "Exam Pattern Analyzer API is running successfully!"
+    }
+
+
 @app.post("/analyze")
 async def analyze_pdfs(files: List[UploadFile] = File(...)):
     """
